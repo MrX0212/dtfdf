@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Prévisualisation HTML - index2.html</title>
+  <style>
+    body, html {
+      margin: 0; padding: 0; height: 100vh; background: white; overflow: hidden;
+    }
+    iframe {
+      width: 100%;
+      height: 100vh;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <iframe id="previewFrame"></iframe>
+
+  <script>
+    const previewFrame = document.getElementById('previewFrame');
+
+    function updatePreview() {
+      const code = localStorage.getItem('htmlCode') || '<p>Éditez dans l\'éditeur...</p>';
+
+      const fullHtml = `
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Prévisualisation</title></head>
+<body>${code}</body>
+</html>`;
+
+      previewFrame.srcdoc = fullHtml;
+    }
+
+    // Mise à jour toutes les 300ms
+    setInterval(updatePreview, 300);
+
+    // Mise à jour au chargement
+    updatePreview();
+  </script>
+</body>
+</html>
 
