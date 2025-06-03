@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Éditeur HTML - index.html</title>
+  <style>
+    body, html {
+      margin: 0; padding: 0; height: 100vh; display: flex; flex-direction: column; font-family: Arial, sans-serif;
+    }
+    textarea {
+      flex: 1;
+      width: 100%;
+      font-family: monospace;
+      font-size: 16px;
+      padding: 10px;
+      box-sizing: border-box;
+      border: none;
+      outline: none;
+      resize: none;
+    }
+    h1 {
+      margin: 10px;
+      text-align: center;
+      color: #222;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Éditeur HTML (ouvre index2.html sur un autre écran)</h1>
+  <textarea id="htmlInput" placeholder="Tape ton code HTML ici..."></textarea>
+
+  <script>
+    const textarea = document.getElementById('htmlInput');
+
+    // Charger le code sauvegardé si présent
+    if(localStorage.getItem('htmlCode')) {
+      textarea.value = localStorage.getItem('htmlCode');
+    }
+
+    // Sauvegarder dans localStorage à chaque modification
+    textarea.addEventListener('input', () => {
+      localStorage.setItem('htmlCode', textarea.value);
+    });
+  </script>
+</body>
+</html>
 
